@@ -4,7 +4,7 @@ const prefix = '-'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
+client.user.setGame(`Regen,`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -26,6 +26,13 @@ client.user.setGame(`Nothing`,"http://twitch.tv/S-F")
   console.log('╚[════════════]╝')
   console.log('')
   console.log('')
+});
+
+client.on('message', message => {
+    if message.content.startsWith("السلام عليكم");
+    message.reply("وعليكم السلام");
+}
+
 });
 
 client.login(process.env.BOT_TOKEN);
