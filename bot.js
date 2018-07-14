@@ -28,11 +28,4 @@ client.user.setGame(`Regen,`,"http://twitch.tv/S-F")
   console.log('')
 });
 
-client.on('message', message => {
-    if message.content.startsWith("السلام عليكم");
-    message.reply("وعليكم السلام");
-}
-
-});
-
 client.login(process.env.BOT_TOKEN);
