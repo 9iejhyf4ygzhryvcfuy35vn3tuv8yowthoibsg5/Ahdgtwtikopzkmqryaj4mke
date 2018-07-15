@@ -2,8 +2,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '$'
 
-client.on('Bot Started', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+client.on('ready', () => {
+    client.user.setActivity("009,",{type: 'Playing'});
+
 });
 
 client.on('voiceStateUpdate', (old, now) => {
