@@ -20,6 +20,7 @@ client.on('message', message =>{
 message.channel.startTyping();
 }
 });
+
 client.on('message', message =>{
     if (message.author.bot) return;
     if(message.content == "$type"){
