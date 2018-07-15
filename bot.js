@@ -7,6 +7,11 @@ client.on('ready', () => {
 
 });
 
+client.on('ready', () => {
+    client.user.setStatus("Idnd");
+ 
+ });
+
 client.on('voiceStateUpdate', (old, now) => {
   const channel = client.channels.get('466481150312054785');
   const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
@@ -30,32 +35,44 @@ message.channel.stopTyping();
 });
 
 client.on('message', message => {
-    var prefix = "$";
-      if (!message.content.startsWith(prefix)) return;
-      var args = message.content.split(' ').slice(1);
-      var argresult = args.join(' ');
-      if (message.author.id == 438041950021746689) return;
-    
-    if (message.content.startsWith(prefix + 'playing')) {
-      client.user.setGame(argresult);
-        message.channel.sendMessage(`**${argresult}** : Status changed`)
-    } else
-    
-    if (message.content.startsWith(prefix + 'Stream')) {
-      client.user.setGame(argresult, "https://www.twitch.tv/ChampionBot");
-        message.channel.sendMessage(`**${argresult}** :The bot stream has been changed`)
-    } else
-    
-    if (message.content.startsWith(prefix + 'name')) {
-      client.user.setUsername(argresult).then
-          message.channel.sendMessage(`**${argresult}** : Name changed`)
-      return message.reply("**You**");
-    } else
-    if (message.content.startsWith(prefix + 'image')) {
-      client.user.setAvatar(argresult);
-        message.channel.sendMessage(`**${argresult}** : The bot image has been changed`);
-    
+    let args = message.content.split(' ').slice(1).join(' ');
+    if (message.content.startsWith('$bc-all')){
+    if(!message.author.id === '') return;
+    message.channel.sendMessage('جار ارسال الرسالة :white_check_mark:')
+    client.users.forEach(m =>{
+    m.sendMessage(args)
+    })
     }
     });
+
+client.on('message', message => {
+
+    if(message.content === prefix + "$mutechannel") {
+                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("**__تم تقفيل الشات__ :white_check_mark: **")
+           });
+             }
+//FIRE BOT
+ if(message.content === prefix + "$unmutechannel") {
+                     if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("**__تم فتح الشات__:white_check_mark:**")
+           });
+             }
+             
+      
+    
+});
 
 client.login(process.env.BOT_TOKEN);
