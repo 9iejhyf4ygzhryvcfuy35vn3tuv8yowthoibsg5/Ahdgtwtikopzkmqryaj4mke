@@ -1,38 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '$'
 
-client.on('ready', () => {
-    client.user.setActivity("009,",{type: 'Playing'});
 
-});
 
-client.on('ready', () => {
-    client.user.setStatus("Idnd");
- 
- });
 
-client.on('voiceStateUpdate', (old, now) => {
-  const channel = client.channels.get('466481150312054785');
-  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
-  const size = channel.name.match(/\[\s(\d+)\s\]/);
-  if (!size) return channel.setName(`Voice ⇏ 「 ${currentSize} 」`);
-  if (currentSize !== size) channel.setName(`Voice ⇏ 「 ${currentSize} 」`);
-});
 
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1).join(' ');
-    if (message.content.startsWith('$bc-all')){
-    if(!message.author.id === '') return;
-    message.channel.sendMessage('جار ارسال الرسالة :white_check_mark:')
-    client.users.forEach(m =>{
-    m.sendMessage(args)
-    })
-    }
-    });
 
-const Discord = require('discord.js');
-const client = new Discord.Client();
+
+
 const yt = require('ytdl-core');
 const ytdl = require('ytdl-core');
 const request = require('request');
@@ -45,6 +20,11 @@ const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";//لا تغيره
 client.on('ready', function() {
 	console.log(`i am ready ${client.user.username}`);
 });
+
+
+
+
+
 
 
 
@@ -266,4 +246,8 @@ client.on('message', function(message) {
 	}
 });
 
-client.login(process.env.BOT_TOKEN);
+
+
+
+
+client.login("NDY3OTAxODcwOTI5NjA4NzE0.DjOZbw.G9D3GmW72ji6I23bARmjAutCPYc");
